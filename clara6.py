@@ -1,3 +1,31 @@
+import subprocess
+import sys
+
+required_packages = {
+    'streamlit': '1.25.0',
+    'matplotlib': '3.7.1',
+    'python-docx': '0.8.11',
+    'pypdf2': '3.0.1'
+}
+
+def install_packages():
+    for package, version in required_packages.items():
+        try:
+            __import__(package)
+        except ImportError:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", f"{package}=={version}"])
+
+install_packages()
+
+# Agora seus imports normais
+import streamlit as st
+import matplotlib.pyplot as plt
+# ... restante dos imports
+
+
+
+
+
 import streamlit as st
 import matplotlib.pyplot as plt
 import re
