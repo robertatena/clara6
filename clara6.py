@@ -1,3 +1,14 @@
+import sys
+from pathlib import Path
+
+# Verifica se está no Streamlit Cloud
+IS_STREAMLIT_CLOUD = Path('/mount/src').exists()
+
+if IS_STREAMLIT_CLOUD:
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
+    logger = logging.getLogger(__name__)
+    logger.info("Running on Streamlit Cloud")
 import subprocess
 import sys
 
